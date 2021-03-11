@@ -1,0 +1,13 @@
+h1,
+h2 {
+  font-family: 'Teko', sans-serif;
+}
+
+h2 {
+  font-weight: normal;
+}
+
+p {
+  font-family: 'Nanum Gothic', sans-serif;
+  line-height: 1.4em;
+}

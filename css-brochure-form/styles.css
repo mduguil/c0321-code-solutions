@@ -1,0 +1,33 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h2 {
+  font-family: 'Brandon Grotesque', sans-serif;
+  text-transform: uppercase;
+  color: #ed6964;
+}
+
+label {
+  font-family: 'Brandon Grotesque', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+div {
+  margin-bottom: 10px;
+}
+
+input {
+  width: 350px;
+  height: 30px;
+}
+
+button {
+  background-color: #ec5d57;
+  color: white;
+}

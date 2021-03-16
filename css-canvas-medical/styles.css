@@ -1,0 +1,201 @@
+body {
+  font-family: 'Avenir', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.top-nav {
+  display: flex;
+  width: 100%;
+  padding: 15px 100px;
+  border-bottom: 1.5px solid rgb(207, 207, 207);
+}
+
+.top-nav > img {
+  width: 130px;
+}
+
+.nav {
+  text-align: end;
+  width: 100%;
+}
+
+.nav a {
+  padding-left: 17px;
+  padding-right: 17px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #bababa;
+}
+
+.banner {
+  background-image: url("images/hero.jpg");
+  background-size: cover;
+  color: #fff;
+  margin: 65px 100px;
+  display: flex;
+}
+
+.content {
+  margin-bottom: 20px;
+  padding: 50px 70px;
+  flex-basis: 50%;
+}
+
+.banner h1 {
+  font-family: 'Tiempos Headline', 'Times New Roman', Times, serif;
+  font-weight: 300;
+  font-size: 2.8rem;
+}
+
+.banner p {
+  font-size: 1.2rem;
+}
+
+button {
+  background-color: #294464;
+  border: none;
+  width: 145px;
+  height: 50px;
+  color: #efefef;
+  border-radius: 3px;
+  font-size: 1.1rem;
+}
+
+.nav button {
+  width: 110px;
+  font-size: 1rem;
+}
+
+.banner button {
+  width: 190px;
+  height: 60px;
+  font-size: 1.4rem;
+  position: relative;
+  top: 12px;
+}
+
+.locations {
+  background-color: #fafafa;
+  padding: 30px 80px;
+  color: #737373;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.catchphrase {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.catchphrase > h2 {
+  font-family: 'Tiempos Headline', 'Times New Roman', Times, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.85rem;
+}
+
+.catchphrase > p {
+  margin-left: 240px;
+  margin-right: 240px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #8f8f8f;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.row > p {
+  flex-basis: 50%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #979797;
+}
+
+.learn-more {
+  color: #737373;
+  display: flex;
+  align-items: center;
+  flex-basis: 50%;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.question {
+  flex-grow: 1;
+  font-family: 'Tiempos Headline', 'Times New Roman', Times, serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.1rem;
+}
+
+.question > p {
+  position: relative;
+  bottom: 10px;
+  font-family: 'Avenir', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.button {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+footer {
+  background-color: #525351;
+  display: flex;
+  padding: 60px 100px;
+  align-items: center;
+  color: #f0f0f0;
+}
+
+address {
+  font-style: normal;
+  flex-grow: 1;
+}
+
+.address > img {
+  width: 170px;
+  margin-bottom: 36px;
+}
+
+.bottom-nav-group {
+  display: flex;
+  position: relative;
+  flex-grow: 1;
+  justify-content: flex-end;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.bottom-navbar {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.category {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+.terms {
+  color: #707070;
+  display: flex;
+  height: 85px;
+  background-color: #fafafa;
+  align-items: center;
+  padding-left: 80px;
+  font-weight: bold;
+}
+
+.terms > p {
+  margin-left: 10px;
+  margin-right: 10px;
+}

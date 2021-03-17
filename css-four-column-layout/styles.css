@@ -1,0 +1,31 @@
+body {
+  background-color: #f7f8fa;
+  font-family: 'Barlow', sans-serif;
+}
+
+.howTo {
+  text-align: center;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+}
+
+.column {
+  text-align: center;
+}
+
+.pics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.phone {
+  width: 240px;
+}
+
+.icon {
+  width: 70px;
+}

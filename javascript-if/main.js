@@ -12,30 +12,35 @@ function isUnderFive(num) {
   if (num < 5) {
     return true;
   }
+  return false;
 }
 
 function isEven(num) {
   if (num % 2 === 0) {
     return true;
   }
+  return false;
 }
 
 function startsWithJ(str) {
   if (str[0] === 'J') {
     return true;
   }
+  return false;
 }
 
 function isOldEnoughToDrink(person) {
   if (person.age >= 21) {
     return true;
   }
+  return false;
 }
 
 function isOldEnoughToDrive(person) {
   if (person.age >= 16) {
     return true;
   }
+  return false;
 }
 
 function isOldEnoughToDrinkAndDrive(person) {
@@ -58,7 +63,7 @@ function introduceWarnerBro(name) {
   if (name === 'yakko' || name === 'wakko') {
     return 'We\'re the warner brothers!';
   } else if (name === 'dot') {
-    return '"I\'m cute~';
+    return 'I\'m cute~';
   } else {
     return 'Goodnight everybody!';
   }

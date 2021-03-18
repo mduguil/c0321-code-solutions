@@ -13,8 +13,6 @@ body {
 
 .pic-wrapper {
   display: flex;
-  height: fit-content;
-  align-self: flex-end;
 }
 
 .pic {
@@ -25,7 +23,7 @@ body {
   object-fit: contain;
 }
 
-span {
+.size {
   padding-left: 5px;
   margin-left: 5px;
   border-left: 1px solid lightgray;

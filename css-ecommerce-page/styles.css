@@ -1,3 +1,7 @@
+body {
+  font-family: 'DM Sans', sans-serif;
+}
+
 .new {
   text-align: center;
 }
@@ -7,6 +11,39 @@
   justify-content: center;
 }
 
-img {
-  width: 180px;
+.pic-wrapper {
+  display: flex;
+  height: fit-content;
+  align-self: flex-end;
+}
+
+.pic {
+  height: 300px;
+  width: 210px;
+  margin-left: 10px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+span {
+  padding-left: 5px;
+  margin-left: 5px;
+  border-left: 1px solid lightgray;
+  color: lightgray;
+  font-weight: normal;
+}
+
+.brand {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.price {
+  font-weight: 600;
+  background-color: peachpuff;
+}
+
+del {
+  font-weight: normal;
+  color: lightgray;
 }

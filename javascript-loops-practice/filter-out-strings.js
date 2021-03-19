@@ -1,10 +1,10 @@
 /* exported filterOutStrings */
 function filterOutStrings(values) {
-  var numsOnly = [];
+  var noStr = [];
   for (var i = 0; i < values.length; i++) {
-    if (typeof values[i] === 'number') {
-      numsOnly.push(values[i]);
+    if (typeof values[i] !== 'string') {
+      noStr.push(values[i]);
     }
   }
-  return numsOnly;
+  return noStr;
 }

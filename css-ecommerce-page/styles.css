@@ -1,0 +1,50 @@
+body {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.new {
+  text-align: center;
+}
+
+.showcase {
+  display: flex;
+  justify-content: center;
+}
+
+.pic-wrapper {
+  display: flex;
+}
+
+.pic {
+  height: 300px;
+  width: 210px;
+  margin-left: 10px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+.size {
+  padding-left: 5px;
+  margin-left: 5px;
+  border-left: 1px solid lightgray;
+  color: lightgray;
+  font-weight: normal;
+}
+
+.brand {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.price {
+  padding-left: 2px;
+  padding-right: 2px;
+  font-weight: 600;
+  background-color: rgb(255, 234, 215);
+  margin-right: 7px;
+}
+
+.old-price {
+  font-weight: normal;
+  color: lightgray;
+}

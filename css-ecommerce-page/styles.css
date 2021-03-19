@@ -37,11 +37,14 @@ body {
 }
 
 .price {
+  padding-left: 2px;
+  padding-right: 2px;
   font-weight: 600;
-  background-color: peachpuff;
+  background-color: rgb(255, 234, 215);
+  margin-right: 7px;
 }
 
-del {
+.old-price {
   font-weight: normal;
   color: lightgray;
 }

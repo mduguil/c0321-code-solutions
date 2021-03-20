@@ -3,8 +3,8 @@ function numVowels(string) {
   var smallChar = string.toLowerCase();
   var count = 0;
   var splitStr = smallChar.split('');
-  for (var item of splitStr) {
-    if (item === 'a' || item === 'e' || item === 'i' || item === 'o' || item === 'u') {
+  for (var i = 0; i < splitStr.length; i++) {
+    if (splitStr[i] === 'a' || splitStr[i] === 'e' || splitStr[i] === 'i' || splitStr[i] === 'o' || splitStr[i] === 'u') {
       count++;
     }
   }

@@ -31,6 +31,7 @@
   background-color: #faea84;
   border: none;
   box-shadow: 0 0 20px 15px #fef3c7;
+  outline: none;
 }
 
 .switch-dark {
@@ -40,4 +41,5 @@
   background-color: #222224;
   border: none;
   box-shadow: 0 0 20px 15px #0c0c0c;
+  outline: none;
 }

@@ -1,0 +1,27 @@
+
+.pressMe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fef9f1;
+  margin: 0;
+}
+
+.switch-light {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #faea84;
+  border: none;
+  box-shadow: 0 0 20px 15px #fef3c7;
+}
+
+.switch-dark {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #222224;
+  border: none;
+  box-shadow: 0 0 20px 15px #0c0c0c;
+}

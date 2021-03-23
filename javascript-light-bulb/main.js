@@ -2,11 +2,11 @@
 var $body = document.querySelector('.light');
 var $container = document.querySelector('.switch-container-light');
 var $switch = document.querySelector('.switch-light');
-var count = 0;
+
+var isOff = true;
 
 $switch.addEventListener('click', function (event) {
-  count++;
-  if (count % 2 === 1) {
+  if (isOff) {
     $container.className = 'switch-container-dark';
     $switch.className = 'switch-dark';
     $body.className = 'dark';
@@ -15,4 +15,5 @@ $switch.addEventListener('click', function (event) {
     $switch.className = 'switch-light';
     $body.className = 'light';
   }
+  isOff = !isOff;
 });

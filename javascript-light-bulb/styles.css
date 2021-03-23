@@ -1,10 +1,26 @@
+.light {
+  background-color: #fef9f1;
+}
 
-.pressMe {
+.dark {
+  background-color: #111;
+}
+
+.switch-container-light {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background-color: #fef9f1;
+  margin: auto;
+}
+
+.switch-container-dark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #111;
   margin: 0;
 }
 

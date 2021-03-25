@@ -10,6 +10,6 @@ document.addEventListener('keydown', function (event) {
     currentIndex++;
     charsArr[currentIndex].className = 'underscore';
   } else {
-    charsArr[currentIndex].classList.add('wrong');
+    charsArr[currentIndex].className = 'wrong underscore';
   }
 });

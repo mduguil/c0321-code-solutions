@@ -13,13 +13,14 @@ $tabContainer.addEventListener('click', function (event) {
     } else {
       $tabs[i].className = 'tab';
     }
-    var $dataView = event.target.getAttribute('data-view');
-    for (var k = 0; k < $views.length; k++) {
-      if ($views[k].getAttribute('data-view') === $dataView) {
-        $views[k].className = 'view';
-      } else {
-        $views[k].className = 'hidden';
-      }
+  }
+
+  var $dataView = event.target.getAttribute('data-view');
+  for (var k = 0; k < $views.length; k++) {
+    if ($views[k].getAttribute('data-view') === $dataView) {
+      $views[k].className = 'view';
+    } else {
+      $views[k].className = 'hidden';
     }
   }
 

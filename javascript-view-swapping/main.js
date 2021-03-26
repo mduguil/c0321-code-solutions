@@ -20,7 +20,7 @@ $tabContainer.addEventListener('click', function (event) {
     if ($views[k].getAttribute('data-view') === $dataView) {
       $views[k].className = 'view';
     } else {
-      $views[k].className = 'hidden';
+      $views[k].className = 'view hidden';
     }
   }
 

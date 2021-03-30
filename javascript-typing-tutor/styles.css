@@ -1,0 +1,25 @@
+.char-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.char-set {
+  font-size: 3.5rem;
+  letter-spacing: 7px;
+  font-family: 'Chewy', cursive;
+  font-weight: bold;
+}
+
+.underscore {
+  border-bottom: 3.5px solid black;
+}
+
+.correct {
+  color: aqua;
+}
+
+.wrong {
+  color: rgb(255, 0, 140);
+}

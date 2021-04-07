@@ -2,10 +2,16 @@
 var exception = ['and', 'or', 'nor', 'but', 'a', 'an', 'the', 'for', 'in', 'of', 'per', 'to'];
 
 function titleCase(string) {
+  string = string.toLowerCase();
   var wordsArr = string.split(' ');
   var titleCaseArr = [];
   for (var i = 0; i < wordsArr.length; i++) {
-    if (isAnExcaption(wordsArr[i], i)) {
+    if (wordsArr[i] === 'api') {
+      titleCaseArr.push(isAcronym(wordsArr[i]));
+    } else if (wordsArr[i] === 'javascript') {
+      wordsArr[i] = 'JavaScript';
+      titleCaseArr.push(wordsArr[i]);
+    } else if (isAnExcaption(wordsArr[i], i)) {
       titleCaseArr.push(wordsArr[i]);
     } else {
       var char = wordsArr[i].split('');
@@ -25,11 +31,20 @@ function isAnExcaption(word, index) {
   return exception.includes(word);
 }
 
-// function isAcronym(string) {
+function isAcronym(string) {
+  var splitStr = string.split('');
+  var bigChar = [];
+  splitStr.forEach(function (char) {
+    bigChar.push(char.toUpperCase());
+  });
+  return bigChar.join('');
+}
+
+// function isFollowedByColon(string) {
 //   var splitStr = string.split('');
-//   var bigChar = [];
-//   splitStr.forEach(function (char) {
-//     bigChar.push(char.toUpperCase());
-//   });
-//   return bigChar.join('');
+//   var lastIndex = splitStr.length - 1;
+//   if (splitStr[lastIndex] === ':') {
+//     return true;
+//   }
+//   return false;
 // }

@@ -1,3 +1,7 @@
+.hidden {
+  display: none !important;
+}
+
 .carousel-container {
   display: flex;
   justify-content: center;
@@ -35,6 +39,10 @@
   margin-right: -30px;
 }
 
+.arrow:hover {
+  cursor: pointer;
+}
+
 .circle-container {
   display: flex;
   justify-content: center;
@@ -44,4 +52,8 @@
 
 .fa-circle {
   margin: 0 2px;
+}
+
+.far:hover {
+  cursor: pointer;
 }

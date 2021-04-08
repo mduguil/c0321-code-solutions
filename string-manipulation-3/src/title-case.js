@@ -9,24 +9,27 @@ function titleCase(string) {
     if (wordsArr[i] === 'api') {
       titleCaseArr.push(isAcronym(wordsArr[i]));
     } else if (wordsArr[i].includes('-')) {
-      var dash = wordsArr[i].split('-');
-      var letters = dash.split('');
-      letters[0][0] = letters[0][0].toUpperCase();
-      letters[1][0] = letters[1][0].toUpperCase();
-      titleCaseArr.push(dash.join('-'));
+      titleCaseArr.push(isHyphenated(wordsArr[i]));
+    } else if (isAnException(wordsArr[i], i)) {
+      titleCaseArr.push(wordsArr[i]);
+    } else if (isFollowedByColon(wordsArr[i])) {
+      titleCaseArr.push(capitalize(wordsArr[i]));
+      titleCaseArr.push(capitalize(wordsArr[i + 1]));
+      i++;
     } else if (wordsArr[i] === 'javascript') {
       wordsArr[i] = 'JavaScript';
       titleCaseArr.push(wordsArr[i]);
-    } else if (isAnException(wordsArr[i], i)) {
-      titleCaseArr.push(wordsArr[i]);
     } else {
-      var char = wordsArr[i].split('');
-      char[0] = char[0].toUpperCase();
-      var capWord = char.join('');
-      titleCaseArr.push(capWord);
+      titleCaseArr.push(capitalize(wordsArr[i]));
     }
   }
   return titleCaseArr.join(' ');
+}
+
+function capitalize(word) {
+  var char = word.split('');
+  char[0] = char[0].toUpperCase();
+  return char.join('');
 }
 
 function isAnException(word, index) {
@@ -46,9 +49,21 @@ function isAcronym(string) {
   return bigChar.join('');
 }
 
-// function isFollowedByColon(string) {
-//   if (string.includes(':')) {
-//     return true;
-//   }
-//   return false;
-// }
+function isHyphenated(word) {
+  var dash = word.split('-');
+  var letters1 = dash[0].split('');
+  var letters2 = dash[1].split('');
+  letters1[0] = letters1[0].toUpperCase();
+  letters2[0] = letters2[0].toUpperCase();
+  dash[0] = letters1.join('');
+  dash[1] = letters2.join('');
+  var dashedWord = dash.join('-');
+  return dashedWord;
+}
+
+function isFollowedByColon(string) {
+  if (string.includes(':')) {
+    return true;
+  }
+  return false;
+}

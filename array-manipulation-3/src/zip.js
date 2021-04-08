@@ -7,8 +7,7 @@ function zip(first, second) {
   }
   for (var i = 0; i < shortArr.length; i++) {
     var miniArr = [];
-    miniArr.push(first[i]);
-    miniArr.push(second[i]);
+    miniArr.push(first[i], second[i]);
     combinedArr.push(miniArr);
   }
   return combinedArr;

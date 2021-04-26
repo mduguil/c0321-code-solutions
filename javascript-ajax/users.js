@@ -3,7 +3,7 @@ function getList() {
 
   var newRequest = new XMLHttpRequest();
 
-  newRequest.open('GET', 'https://jsonplaceholder.typicode.com/users');
+  newRequest.open('GET', 'http://shibe.online/api/shibes?count=[1-100]&urls=[true/false]&httpsUrls=[true/false]');
   newRequest.responseType = 'json';
 
   newRequest.addEventListener('load', function (event) {

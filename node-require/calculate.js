@@ -9,15 +9,15 @@ const num2 = +process.argv[4];
 
 switch (operator) {
   case 'plus':
-    add(num1, num2);
+    console.log('result: ', add(num1, num2));
     break;
   case 'minus':
-    subtract(num1, num2);
+    console.log('result: ', subtract(num1, num2));
     break;
   case 'times':
-    multiply(num1, num2);
+    console.log('result: ', multiply(num1, num2));
     break;
   case 'over':
-    divide(num1, num2);
+    console.log('result: ', divide(num1, num2));
     break;
 }

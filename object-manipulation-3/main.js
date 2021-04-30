@@ -44,4 +44,49 @@ const handout = players => {
   return players;
 };
 
-handout(players);
+const cardValue = cardDeckInfo.rank;
+let points = 0;
+
+cardValue.forEach(card => {
+  switch (card) {
+    case 'Ace':
+      points = 11;
+      break;
+    case 'King':
+      points = 10;
+      break;
+    case 'Queen':
+      points = 10;
+      break;
+    case 'Jack':
+      points = 10;
+      break;
+    case '10':
+      points = 10;
+      break;
+    case '9':
+      points = 9;
+      break;
+    case '8':
+      points = 8;
+      break;
+    case '7':
+      points = 7;
+      break;
+    case '6':
+      points = 6;
+      break;
+    case '5':
+      points = 5;
+      break;
+    case '4':
+      points = 4;
+      break;
+    case '3':
+      points = 3;
+      break;
+    case '2':
+      points = 2;
+      break;
+  }
+});

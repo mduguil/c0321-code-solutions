@@ -12,7 +12,12 @@ cardDeckInfo.suite.forEach(suite => {
     cardDeck.push(rank + ' ' + suite);
   });
 });
-console.log(cardDeck);
+
+const playGame = () => {
+  handout(players);
+  checkScore(players);
+};
+
 const players = [
   {
     name: 'P1',
@@ -45,17 +50,25 @@ const handout = players => {
 };
 
 const checkScore = players => {
+  let highScore = 0;
+  let winner = '';
   players.forEach(player => {
-    const hand = player.hand;
     let score = 0;
+    const hand = player.hand;
     hand.forEach(card => {
       const cardInfo = card.split(' ');
       const rank = cardInfo[0];
       checkValue(rank);
       score += points;
     });
+    console.log(player.name + ': ' + score);
 
+    if (score > highScore) {
+      highScore = score;
+      winner = player.name;
+    }
   });
+  console.log('The winner is: ' + winner + ' with ' + highScore + ' points.');
 };
 
 let points = 0;

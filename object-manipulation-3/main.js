@@ -52,15 +52,18 @@ const handout = players => {
 const checkScore = players => {
   let highScore = 0;
   let winner = '';
+
   players.forEach(player => {
     let score = 0;
     const hand = player.hand;
+
     hand.forEach(card => {
       const cardInfo = card.split(' ');
       const rank = cardInfo[0];
-      checkValue(rank);
+      const points = checkValue(rank);
       score += points;
     });
+
     console.log(player.name + ': ' + score);
 
     if (score > highScore) {
@@ -71,47 +74,15 @@ const checkScore = players => {
   console.log('The winner is: ' + winner + ' with ' + highScore + ' points.');
 };
 
-let points = 0;
 const checkValue = rank => {
   switch (rank) {
     case 'Ace':
-      points = 11;
-      break;
+      return 11;
     case 'King':
-      points = 10;
-      break;
     case 'Queen':
-      points = 10;
-      break;
     case 'Jack':
-      points = 10;
-      break;
-    case '10':
-      points = 10;
-      break;
-    case '9':
-      points = 9;
-      break;
-    case '8':
-      points = 8;
-      break;
-    case '7':
-      points = 7;
-      break;
-    case '6':
-      points = 6;
-      break;
-    case '5':
-      points = 5;
-      break;
-    case '4':
-      points = 4;
-      break;
-    case '3':
-      points = 3;
-      break;
-    case '2':
-      points = 2;
-      break;
+      return 10;
+    default:
+      return parseInt(rank);
   }
 };

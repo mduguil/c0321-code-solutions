@@ -16,18 +16,32 @@ cardDeckInfo.suite.forEach(suite => {
 const players = [
   {
     name: 'P1',
-    hand: null
+    hand: []
   },
   {
     name: 'P2',
-    hand: null
+    hand: []
   },
   {
     name: 'P3',
-    hand: null
+    hand: []
   },
   {
     name: 'P4',
-    hand: null
+    hand: []
   }
 ];
+
+const handout = players => {
+  const shuffledDeck = _.shuffle(cardDeck);
+
+  players.forEach(player => {
+    const hand = player.hand;
+    while (hand.length < 2) {
+      hand.push(shuffledDeck.pop());
+    }
+  });
+  return players;
+};
+
+handout(players);

@@ -13,7 +13,11 @@ function titleCase(string) {
     } else if (isAnException(wordsArr[i], i)) {
       titleCaseArr.push(wordsArr[i]);
     } else if (isFollowedByColon(wordsArr[i])) {
-      titleCaseArr.push(capitalize(wordsArr[i]));
+      const splitStr = wordsArr[i].split(':');
+      if (splitStr[0] === 'javascript') {
+        splitStr[0] = 'JavaScript:';
+      }
+      titleCaseArr.push(splitStr[0]);
       titleCaseArr.push(capitalize(wordsArr[i + 1]));
       i++;
     } else if (wordsArr[i] === 'javascript') {

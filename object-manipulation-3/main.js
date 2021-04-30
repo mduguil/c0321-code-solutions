@@ -9,10 +9,10 @@ const cardDeck = [];
 
 cardDeckInfo.suite.forEach(suite => {
   cardDeckInfo.rank.forEach(rank => {
-    cardDeck.push(suite + rank);
+    cardDeck.push(rank + ' ' + suite);
   });
 });
-
+console.log(cardDeck);
 const players = [
   {
     name: 'P1',
@@ -44,11 +44,23 @@ const handout = players => {
   return players;
 };
 
-const cardValue = cardDeckInfo.rank;
-let points = 0;
+const checkScore = players => {
+  players.forEach(player => {
+    const hand = player.hand;
+    let score = 0;
+    hand.forEach(card => {
+      const cardInfo = card.split(' ');
+      const rank = cardInfo[0];
+      checkValue(rank);
+      score += points;
+    });
 
-cardValue.forEach(card => {
-  switch (card) {
+  });
+};
+
+let points = 0;
+const checkValue = rank => {
+  switch (rank) {
     case 'Ace':
       points = 11;
       break;
@@ -89,4 +101,4 @@ cardValue.forEach(card => {
       points = 2;
       break;
   }
-});
+};

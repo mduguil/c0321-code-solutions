@@ -58,6 +58,28 @@ const deleteInput = () => {
   });
 };
 
+const update = () => {
+  const idNum = process.argv[3];
+  const inputNote = process.argv[4];
+
+  fs.readFile('data.json', 'utf8', (err, data) => {
+    if (err) throw err;
+
+    const dataObj = JSON.parse(data);
+
+    const updateData = (id, note) => {
+      dataObj.notes[id] = note;
+      return dataObj;
+    };
+
+    const updatedData = JSON.stringify(updateData(idNum, inputNote), null, 2);
+
+    fs.writeFile('data.json', updatedData, 'utf8', err => {
+      if (err) throw err;
+    });
+  });
+};
+
 switch (command) {
   case 'read':
     read();
@@ -67,5 +89,8 @@ switch (command) {
     break;
   case 'delete':
     deleteInput();
+    break;
+  case 'update':
+    update();
     break;
 }

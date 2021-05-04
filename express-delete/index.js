@@ -23,9 +23,8 @@ const grades = {
   }
 };
 
-const gradesArr = [];
-
 app.get('/api/grades', (req, res) => {
+  const gradesArr = [];
   for (const key in grades) {
     gradesArr.push(grades[key]);
   }
@@ -40,5 +39,5 @@ app.delete('/api/grades/:id', (req, res) => {
 });
 
 function deleteGrade(id) {
-  gradesArr.splice(id - 1, 1);
+  delete grades[id];
 }

@@ -13,9 +13,16 @@ app.get('/api/notes', (req, res) => {
     for (const key in notes) {
       dataArr.push(notes[key]);
     }
-    res.json(dataArr);
-    res.status(200);
+    res.status(200).json(dataArr);
   });
+});
+
+app.get('/api/notes/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  if (isNaN(id) || id < 0) {
+    res.json({ error: 'ID must be a positive interger!' });
+    res.sendStatus(400);
+  }
 });
 
 app.listen(3000, () => {

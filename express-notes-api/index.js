@@ -60,10 +60,12 @@ app.post('/api/notes', (req, res) => {
       const updatedData = JSON.stringify(updateData(), null, 2);
 
       fs.writeFile('data.json', updatedData, 'utf8', err => {
-        if (err) throw err;
+        if (err) {
+          res.status(500).json({ error: 'An unexpected error occurred.' });
+        } else {
+          res.status(201).send(req.body);
+        }
       });
-
-      res.status(201).send(req.body);
     });
   }
 });

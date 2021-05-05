@@ -70,6 +70,41 @@ app.post('/api/notes', (req, res) => {
   }
 });
 
+app.delete('/api/notes/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  if (isNaN(id) || id < 0) {
+    res.status(400).json({ error: 'ID must be a positive interger!' });
+    return;
+  }
+
+  fs.readFile('data.json', 'utf8', (err, data) => {
+    if (err) throw err;
+
+    const dataObj = JSON.parse(data);
+    const notes = dataObj.notes;
+
+    if (!notes[id]) {
+      res.status(404).json({ error: `Cannot find note with ID ${id}` });
+    } else {
+      const deleteData = () => {
+        delete notes[id];
+        return dataObj;
+      };
+
+      const shortendData = JSON.stringify(deleteData(), null, 2);
+
+      fs.writeFile('data.json', shortendData, 'utf8', err => {
+        if (err) {
+          res.status(500).json({ error: 'An unexpected error occurred.' });
+          return;
+        }
+        res.status(204).json(req.body);
+      });
+    }
+
+  });
+});
+
 app.listen(3000, () => {
   // eslint-disable-next-line no-console
   console.log('Connected to port 3000');

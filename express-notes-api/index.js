@@ -9,7 +9,12 @@ app.get('/api/notes', (req, res) => {
   const dataArr = [];
 
   fs.readFile('data.json', 'utf8', (err, data) => {
-    if (err) throw err;
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'an unexpected error occurred' });
+      return;
+    }
+
     const dataObj = JSON.parse(data);
     const notes = dataObj.notes;
     for (const key in notes) {
@@ -27,7 +32,12 @@ app.get('/api/notes/:id', (req, res) => {
   }
 
   fs.readFile('data.json', 'utf8', (err, data) => {
-    if (err) throw err;
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'an unexpected error occurred' });
+      return;
+    }
+
     const dataObj = JSON.parse(data);
     const notes = dataObj.notes;
 
@@ -44,8 +54,11 @@ app.post('/api/notes', (req, res) => {
     res.status(400).json({ error: 'Content is a required field!' });
   } else {
     fs.readFile('data.json', 'utf8', (err, data) => {
-      if (err) throw err;
-
+      if (err) {
+        console.error(err);
+        res.status(500).json({ error: 'an unexpected error occurred' });
+        return;
+      }
       const dataObj = JSON.parse(data);
       let nextId = dataObj.nextId;
       const updateData = () => {
@@ -78,7 +91,11 @@ app.delete('/api/notes/:id', (req, res) => {
   }
 
   fs.readFile('data.json', 'utf8', (err, data) => {
-    if (err) throw err;
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'an unexpected error occurred' });
+      return;
+    }
 
     const dataObj = JSON.parse(data);
     const notes = dataObj.notes;
@@ -116,7 +133,11 @@ app.put('/api/notes/:id', (req, res) => {
   }
 
   fs.readFile('data.json', 'utf8', (err, data) => {
-    if (err) throw err;
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'an unexpected error occurred' });
+      return;
+    }
 
     const dataObj = JSON.parse(data);
     const notes = dataObj.notes;

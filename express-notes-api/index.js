@@ -8,7 +8,8 @@ app.get('/api/notes', (req, res) => {
 
   fs.readFile('data.json', 'utf8', (err, data) => {
     if (err) throw err;
-    const notes = data.notes;
+    const dataObj = JSON.parse(data);
+    const notes = dataObj.notes;
     for (const key in notes) {
       dataArr.push(notes[key]);
     }

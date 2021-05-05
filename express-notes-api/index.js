@@ -1,7 +1,9 @@
 const express = require('express');
 const fs = require('fs');
-
 const app = express();
+const JSONparser = express.json();
+
+app.use(JSONparser);
 
 app.get('/api/notes', (req, res) => {
   const dataArr = [];
@@ -35,6 +37,35 @@ app.get('/api/notes/:id', (req, res) => {
       res.status(404).json({ error: `Cannot find note with ID ${id}` });
     }
   });
+});
+
+app.post('/api/notes', (req, res) => {
+  if (!req.body.content) {
+    res.status(400).json({ error: 'Content is a required field!' });
+  } else {
+    fs.readFile('data.json', 'utf8', (err, data) => {
+      if (err) throw err;
+
+      const dataObj = JSON.parse(data);
+      let nextId = dataObj.nextId;
+      const updateData = () => {
+        req.body.id = nextId;
+        dataObj.notes[nextId] = req.body;
+
+        nextId++;
+        dataObj.nextId = nextId;
+        return dataObj;
+      };
+
+      const updatedData = JSON.stringify(updateData(), null, 2);
+
+      fs.writeFile('data.json', updatedData, 'utf8', err => {
+        if (err) throw err;
+      });
+
+      res.status(201).send(req.body);
+    });
+  }
 });
 
 app.listen(3000, () => {

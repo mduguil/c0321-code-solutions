@@ -34,16 +34,8 @@ app.get('/api/grades', (req, res) => {
 
 app.post('/api/grades', (req, res) => {
   const input = req.body;
-  if (!input.name) {
-    res.status(400).json({ error: 'Name is a required field!' });
-    return;
-  }
-  if (!input.course) {
-    res.status(400).json({ error: 'Course is a required field!' });
-    return;
-  }
-  if (!input.score) {
-    res.status(400).json({ error: 'Score is a required field!' });
+  if (!input.name || !input.course || !input.score) {
+    res.status(400).json({ error: 'Name, Course and Score are required fields!' });
     return;
   }
   if (isNaN(+input.score) || +input.score < 0 || +input.score > 100) {
@@ -52,13 +44,52 @@ app.post('/api/grades', (req, res) => {
   }
   const addGrade = `
     insert into "grades" ("name", "course", "score")
-    values ('${input.name}', '${input.course}', '${+input.score}')
+    values ($1, $, $3)
     returning *
   `;
 
-  db.query(addGrade)
+  const values = [input.name, input.course, JSON.parse(input.score, 10)];
+
+  db.query(addGrade, values)
     .then(result => {
       res.status(201).json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'An unexpected error occurred.' });
+    });
+});
+
+app.put('/api/grades/:gradeId', (req, res) => {
+  const input = req.body;
+  const id = parseInt(req.params.gradeId, 10);
+  if (isNaN(id) || id < 0) {
+    res.status(400).json({ error: 'ID must be a positive interger!' });
+    return;
+  } else if (!input.name || !input.course || !input.score) {
+    res.status(400).json({ error: 'Name, Course and Score are required fields!' });
+    return;
+  }
+
+  const updateGrade = `
+    update "grades"
+       set "name" = $1,
+           "course" = $2,
+           "score" = $3
+      where "gradeId" = $4
+      returning *
+  `;
+
+  const params = [input.name, input.course, JSON.parse(input.score, 10), id];
+
+  db.query(updateGrade, params)
+    .then(result => {
+      const grade = result.rows[0];
+      if (!grade) {
+        res.status(404).json({ error: `Cannot find grade with "gradeId" ${id}` });
+      } else {
+        res.status(200).json(grade);
+      }
     })
     .catch(err => {
       console.error(err);

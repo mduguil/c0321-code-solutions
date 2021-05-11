@@ -52,7 +52,7 @@ app.post('/api/grades', (req, res) => {
 
   db.query(addGrade, values)
     .then(result => {
-      res.status(201).json(result.rows);
+      res.status(201).json(result.rows[0]);
     })
     .catch(err => {
       console.error(err);
@@ -89,6 +89,36 @@ app.put('/api/grades/:gradeId', (req, res) => {
         res.status(404).json({ error: `Cannot find grade with "gradeId" ${id}` });
       } else {
         res.status(200).json(grade);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'An unexpected error occurred.' });
+    });
+});
+
+app.delete('/api/grades/:gradeId', (req, res) => {
+  const id = parseInt(req.params.gradeId, 10);
+  if (isNaN(id) || id < 0) {
+    res.status(400).json({ error: 'ID must be a positive interger!' });
+    return;
+  }
+
+  const deleteGrade = `
+    delete from "grades"
+    where "gradeId" = $1
+    returning *
+  `;
+
+  const params = [id];
+
+  db.query(deleteGrade, params)
+    .then(result => {
+      const grade = result.rows[0];
+      if (!grade) {
+        res.status(404).json({ error: `Cannot find grade with gradeId ${id}` });
+      } else {
+        res.sendStatus(204);
       }
     })
     .catch(err => {

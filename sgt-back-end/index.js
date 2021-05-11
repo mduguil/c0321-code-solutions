@@ -48,7 +48,7 @@ app.post('/api/grades', (req, res) => {
     returning *
   `;
 
-  const values = [input.name, input.course, JSON.parse(input.score, 10)];
+  const values = [input.name, input.course, parseInt(input.score, 10)];
 
   db.query(addGrade, values)
     .then(result => {
@@ -80,7 +80,7 @@ app.put('/api/grades/:gradeId', (req, res) => {
       returning *
   `;
 
-  const params = [input.name, input.course, JSON.parse(input.score, 10), id];
+  const params = [input.name, input.course, parseInt(input.score, 10), id];
 
   db.query(updateGrade, params)
     .then(result => {

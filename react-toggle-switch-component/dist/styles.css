@@ -1,0 +1,38 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.switch {
+  background-color: #c4c4c4;
+  height: 60px;
+  width: 120px;
+  border-radius: 33px;
+  display: inline-block;
+  padding: 4px;
+}
+
+.switch-on {
+  background-color: rgb(255, 215, 215);
+}
+
+.slider {
+  background-color: rgb(241, 240, 240);
+  width: 60px;
+  display: inline-block;
+  height: 100%;
+  border-radius: 70px;
+}
+
+.slider-on {
+  position: relative;
+  left: 60px;
+}
+
+.status {
+  font-size: 2.8rem;
+  margin-left: 15px;
+  font-family: fangsong, sans-serif;
+}

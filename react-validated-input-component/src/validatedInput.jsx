@@ -27,13 +27,19 @@ class InputValidation extends React.Component {
   }
 
   render() {
+    let icon;
+    if (this.handleSubmit === false) {
+      icon = 'fas fa-times wrong';
+    } else {
+      icon = 'fas fa-check correct';
+    }
     return (
       <form>
         <label>
           Password
           <div>
             <input type="password" value={this.state.value} onSubmit={this.handleSubmit} onChange={this.handleChange} required/>
-            <i className={this.handleSubmit === false ? 'fas fa-times' : 'fas fa-check'} />
+            <i className={icon} />
           </div>
         </label>
       </form>

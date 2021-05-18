@@ -11,10 +11,10 @@ i {
   margin-left: 6px;
 }
 
-.fa-times {
+.wrong {
   color: red;
 }
 
-.fa-check {
+.correct {
   color: green;
 }

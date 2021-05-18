@@ -1,0 +1,42 @@
+.hidden {
+  display: none !important;
+}
+
+#container {
+  height: 100vh;
+  flex-direction: column;
+}
+
+#container,
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stopwatch {
+  border: 4px solid black;
+  width: 150px;
+  height: 150px;
+  border-radius: 80px;
+}
+
+.stopwatch:hover {
+  cursor: pointer;
+}
+
+.counter {
+  height: 100%;
+  font-size: 1.7rem;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+i {
+  margin-top: 20px;
+  font-size: 2rem;
+}
+
+i:hover {
+  cursor: pointer;
+}

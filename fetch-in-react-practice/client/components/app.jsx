@@ -50,8 +50,10 @@ export default class App extends React.Component {
     })
       .then(res => res.json())
       .then(task => {
+        const taskList = this.state.todos;
+        taskList.push(task);
         this.setState({
-          todos: this.state.task.push(task)
+          todos: taskList
         });
       });
   }
@@ -71,6 +73,33 @@ export default class App extends React.Component {
      * TIP: Be sure to SERIALIZE the updates in the body with JSON.stringify()
      * And specify the "Content-Type" header as "application/json"
      */
+    let index;
+    const { todos } = this.state;
+
+    for (let i = 0; i < todos.length; i++) {
+      if (todos[i].todoId === todoId) {
+        index = i;
+      }
+    }
+
+    const statusUpdate = {
+      isCompleted: !todos[index].isCompleted
+    };
+
+    fetch(`/api/todos/${todoId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(statusUpdate)
+    })
+      .then(res => res.json())
+      .then(updatedTask => {
+        todos[index] = updatedTask;
+        this.setState({
+          todos: todos
+        });
+      });
   }
 
   render() {

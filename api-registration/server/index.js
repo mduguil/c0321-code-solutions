@@ -37,36 +37,33 @@ app.post('/api/auth/sign-up', (req, res, next) => {
    *
    * Hint: Insert statements can include a `returning` clause to retrieve the insterted row(s).
    */
-  try {
-    argon2.hash(password)
-      .then(hash => {
+  argon2.hash(password)
+    .then(hash => {
+      const addUser = `
+                insert into "users" ("username", "hashedPassword")
+                values ($1, $2)
+                returning "username","userId", "createdAt"
+              `;
 
-        const addUser = `
-                  insert into "users" ("username", "hashedPassword")
-                  values ($1, $2)
-                  returning "username","userId", "createdAt"
-                `;
+      const values = [username, hash];
 
-        const values = [username, hash];
-
-        db.query(addUser, values)
-          .then(result => {
-            res.status(201).json(result.rows[0]);
-          })
-          .catch(err => {
-            console.error(err);
-            res.status(500).json({
-              error: 'An unexpected error occurred.'
-            });
+      db.query(addUser, values)
+        .then(result => {
+          res.status(201).json(result.rows[0]);
+        })
+        .catch(err => {
+          console.error(err);
+          res.status(500).json({
+            error: 'An unexpected error occurred.'
           });
-
+        });
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occurred.'
       });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({
-      error: 'An unexpected error occurred.'
     });
-  }
 });
 
 app.use(errorMiddleware);

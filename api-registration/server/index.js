@@ -44,7 +44,7 @@ app.post('/api/auth/sign-up', (req, res, next) => {
       const addUser = `
           insert into "users" ("username", "hashedPassword")
           values ($1, $2)
-          returning *
+          returning "username","userId", "createdAt"
         `;
 
       const values = [username, hash];

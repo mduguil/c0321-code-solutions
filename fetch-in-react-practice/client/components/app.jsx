@@ -50,7 +50,7 @@ export default class App extends React.Component {
     })
       .then(res => res.json())
       .then(task => {
-        const taskList = this.state.todos;
+        const taskList = this.state.todos.slice();
         taskList.push(task);
         this.setState({
           todos: taskList
@@ -74,16 +74,16 @@ export default class App extends React.Component {
      * And specify the "Content-Type" header as "application/json"
      */
     let index;
-    const { todos } = this.state;
+    const taskList = this.state.todos.slice();
 
-    for (let i = 0; i < todos.length; i++) {
-      if (todos[i].todoId === todoId) {
+    for (let i = 0; i < taskList.length; i++) {
+      if (taskList[i].todoId === todoId) {
         index = i;
       }
     }
 
     const statusUpdate = {
-      isCompleted: !todos[index].isCompleted
+      isCompleted: !taskList[index].isCompleted
     };
 
     fetch(`/api/todos/${todoId}`, {
@@ -95,9 +95,9 @@ export default class App extends React.Component {
     })
       .then(res => res.json())
       .then(updatedTask => {
-        todos[index] = updatedTask;
+        taskList[index] = updatedTask;
         this.setState({
-          todos: todos
+          todos: taskList
         });
       });
   }

@@ -17,7 +17,7 @@ const jsonMiddleware = express.json();
 
 app.use(jsonMiddleware);
 
-app.get('/api/grades', (req, res) => {
+app.get('/api/grades', (req, res, next) => {
   const sql = `
     select *
       from "grades"
@@ -35,7 +35,7 @@ app.get('/api/grades', (req, res) => {
     });
 });
 
-app.post('/api/grades', (req, res) => {
+app.post('/api/grades', (req, res, next) => {
   const { name, course } = req.body;
   const score = parseInt(req.body.score, 10);
   if (!name || !course || !score) {
@@ -69,7 +69,7 @@ app.post('/api/grades', (req, res) => {
     });
 });
 
-app.get('/api/grades/:gradeId', (req, res) => {
+app.get('/api/grades/:gradeId', (req, res, next) => {
   const gradeId = parseInt(req.params.gradeId, 10);
   if (!Number.isInteger(gradeId) || gradeId < 1) {
     res.status(400).json({
@@ -102,7 +102,7 @@ app.get('/api/grades/:gradeId', (req, res) => {
     });
 });
 
-app.put('/api/grades/:gradeId', (req, res) => {
+app.put('/api/grades/:gradeId', (req, res, next) => {
   const gradeId = parseInt(req.params.gradeId, 10);
   if (!Number.isInteger(gradeId) || gradeId < 1) {
     res.status(400).json({
@@ -146,7 +146,7 @@ app.put('/api/grades/:gradeId', (req, res) => {
     });
 });
 
-app.delete('/api/grades/:gradeId', (req, res) => {
+app.delete('/api/grades/:gradeId', (req, res, next) => {
   const gradeId = parseInt(req.params.gradeId, 10);
   if (!Number.isInteger(gradeId) || gradeId < 1) {
     res.status(400).json({

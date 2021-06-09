@@ -19,11 +19,9 @@ class InputValidation extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { value } = this.state;
-    if (!value) {
-      return false;
-    }
-    return true;
+    this.setState({
+      value: ''
+    });
   }
 
   render() {

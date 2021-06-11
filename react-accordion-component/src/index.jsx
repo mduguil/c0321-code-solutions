@@ -18,6 +18,6 @@ const topics = [
 ];
 
 ReactDOM.render(
-  <Accordion content={topics} />,
+  <Accordion contents={topics} />,
   document.querySelector('#root')
 );

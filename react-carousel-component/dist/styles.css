@@ -1,0 +1,15 @@
+
+.container {
+  width: 500px;
+  border: 2px solid black;
+}
+
+.pokemon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemon {
+  max-width: 260px;
+}

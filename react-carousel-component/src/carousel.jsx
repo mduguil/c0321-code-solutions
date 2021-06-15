@@ -30,7 +30,7 @@ export default class Carousel extends React.Component {
       });
     } else {
       this.setState({
-        currSlide: 4
+        currSlide: this.props.pokemons.length - 1
       });
     }
   }

@@ -6,8 +6,9 @@
 
 .pokemon-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  height: 300px;
 }
 
 .pokemon {
@@ -24,5 +25,18 @@
 }
 
 .next:hover {
+  cursor: pointer;
+}
+
+.dot-container {
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  margin: 10px 3px;
+}
+
+.dot:hover {
   cursor: pointer;
 }

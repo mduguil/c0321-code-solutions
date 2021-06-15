@@ -8,6 +8,7 @@ export default class Carousel extends React.Component {
     };
     this.handleNextClick = this.handleNextClick.bind(this);
     this.handleBackClick = this.handleBackClick.bind(this);
+    this.clickDot = this.clickDot.bind(this);
   }
 
   handleNextClick() {
@@ -29,9 +30,24 @@ export default class Carousel extends React.Component {
       });
     } else {
       this.setState({
-        currSlide: 0
+        currSlide: 4
       });
     }
+  }
+
+  renderDots() {
+    return (
+      this.props.pokemons.map((value, index) => {
+        const dotClass = index === this.state.currSlide ? 's' : 'r';
+        return <i key={index} className={`dot fa${dotClass} fa-circle`}
+          onClick={this.clickDot} index={index}></i>;
+      })
+    );
+  }
+
+  clickDot(event) {
+    const index = event.target.getAttribute('index');
+    this.setState({ currSlide: parseInt(index, 10) });
   }
 
   componentDidMount() {
@@ -45,7 +61,7 @@ export default class Carousel extends React.Component {
           currSlide: 0
         });
       }
-    }, 5000);
+    }, 3000);
   }
 
   render() {
@@ -57,6 +73,9 @@ export default class Carousel extends React.Component {
           <i className="fas fa-chevron-left back" onClick={this.handleBackClick}></i>
           <img src={pokemons[currSlide]} className="pokemon" />
           <i className="fas fa-chevron-right next" onClick={this.handleNextClick}></i>
+        </div>
+        <div className="dot-container">
+          {this.renderDots()}
         </div>
       </div>
     );

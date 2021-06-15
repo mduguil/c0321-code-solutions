@@ -1,0 +1,42 @@
+
+.container {
+  width: 500px;
+  border: 2px solid black;
+}
+
+.pokemon-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 300px;
+}
+
+.pokemon {
+  max-width: 260px;
+}
+
+.back,
+.next {
+  font-size: 2rem;
+}
+
+.back:hover {
+  cursor: pointer;
+}
+
+.next:hover {
+  cursor: pointer;
+}
+
+.dot-container {
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  margin: 10px 3px;
+}
+
+.dot:hover {
+  cursor: pointer;
+}

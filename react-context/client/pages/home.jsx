@@ -1,4 +1,5 @@
 import React from 'react';
+import AppContext from '../lib/app-context';
 import Redirect from '../components/redirect';
 
 const styles = {
@@ -30,3 +31,5 @@ export default class Home extends React.Component {
     );
   }
 }
+
+Home.contextType = AppContext;

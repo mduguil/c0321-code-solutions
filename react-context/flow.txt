@@ -1,0 +1,20 @@
+User can sign up
+  - Clicking the 'Register Now' button updates the state to change the text to Sign-up
+  - Submitting username and password creates a POST request to the server, checks if both inputs are filled out and hashes the password before      saving it on the database
+  - Server sends a response of success/error and updates the state to show Sign-in
+
+User can sign in.
+  - Clicking the 'Log In' button sends a POST request to the server, checks if both inputs are filled out
+  - If both are filled out, the server then sends a SQL query to the database to check if input username exists
+  - If username exists, the input password is hashed and compared to the hashed password stored in the database
+  - If password matches, a token is provided using the login info and user is redirected to Home page
+
+User can stay signed in (even if they refresh the page).
+  - On reload, the broswer checks for a token in local storage
+  - If there's a token, the user property of the state updates to be the user
+  - If there's none, the browser redirects to Auth page
+
+User can sign out.
+  - Clicking 'Sign Out' removes token from local storage
+  - User property of the state goes back to null
+  - Page renders and goes back to Auth page
